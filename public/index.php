@@ -1,11 +1,21 @@
 <?php
 require './vendor/autoload.php';
 
-$app = new \Slim\App();
+$app = new \Slim\App([
+  'settings' => [
+      'displayErrorDetails' => true
+  ]
+]);
 
-$app->get('/', function ($request, $response, $args) {
-  echo 'Home';
-})->setName('home');
+$container = $app->getContainer();
+
+$container['HomeController'] = function($container) use ($app){
+    return new DownsMaster\Controllers\HomeController();
+};
+
+$app->get('/', 'HomeController:index' )->setName('home');
+
+
 
 $app->get('/contato[/]', function($request, $response, $args){
   echo 'contato';
