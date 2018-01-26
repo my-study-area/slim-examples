@@ -1,14 +1,17 @@
 <?php
     namespace DownsMaster\Controllers;
+    use DownsMaster\Controllers\Controller;
 
-    /**
-     *
-     */
-    class HomeController
+    class HomeController extends Controller
     {
+        public function __construct($container)
+        {
+            parent::__contruct($container);
+        }
 
         public function index($request, $response, $args)
         {
-          echo 'Estou na Home via controller';
+          echo $this->algumacoisa;
         }
+
     }

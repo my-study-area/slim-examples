@@ -8,10 +8,12 @@ $app = new \Slim\App([
 ]);
 
 $container = $app->getContainer();
+$container['algumacoisa'] = 'alguma outra  coisa';
 
-$container['HomeController'] = function($container) use ($app){
-    return new DownsMaster\Controllers\HomeController();
+$container['HomeController'] = function($container){
+    return new DownsMaster\Controllers\HomeController($container);
 };
+
 
 $app->get('/', 'HomeController:index' )->setName('home');
 
