@@ -11,7 +11,10 @@
 
         public function index($request, $response, $args)
         {
-          echo $this->algumacoisa;
+          // echo $this->algumacoisa;
+          return $this->view->render($response, 'home.twig', [
+              'nome' => 'Adriano  Avelino'
+          ]);
         }
 
     }

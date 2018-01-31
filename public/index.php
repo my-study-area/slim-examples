@@ -9,6 +9,19 @@ $app = new \Slim\App([
 
 $container = $app->getContainer();
 $container['algumacoisa'] = 'alguma outra  coisa';
+$container['view'] = function ($container){
+    $folder = __DIR__;
+    $view =  new \Slim\Views\Twig($folder.'/src/views', [
+        'cache' => false
+    ]);
+
+    $view->addExtension(new \Slim\Views\TwigExtension(
+        $container->router,
+        $container->request->getUri()
+    ));
+
+    return $view;
+};
 
 $container['HomeController'] = function($container){
     return new DownsMaster\Controllers\HomeController($container);

@@ -3,7 +3,6 @@
 
     abstract class Controller {
         protected $container;
-        protected $msg = 'msg do controller';
 
         public function __contruct($container)
         {
